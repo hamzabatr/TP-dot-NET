@@ -8,14 +8,15 @@ namespace ASP.Server.Model
 {
     public class Book
     {
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-        public string Nom { get; set; }
-        public string Autheur { get; set; }
-        public double prix { get; set; }
-        public string contenu { get; set; }
-        public List<Genre> Genre { get; set; }
+        public string Name { get; set; }
+        public string Author { get; set; }
+        public double Price { get; set; }
+        public string Content { get; set; }
+        public List<Genre> Genres { get; set; }
 
 
 
