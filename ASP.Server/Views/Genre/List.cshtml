@@ -12,7 +12,12 @@
     {
         <div>@genre.Name</div>
         <div>@genre.Id</div>
+        @foreach(var book in @genre.Books)
+        {
+           <div>@book.Name</div> 
+        }
+        <br /><br />
     }
-</div>
+</>
 
 

@@ -354,7 +354,6 @@ C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\bin\Debug\net6.0\ru\M
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.Server.csproj.AssemblyReference.cache
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.Server.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.Server.AssemblyInfoInputs.cache
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.Server.AssemblyInfo.cs
@@ -371,3 +370,4 @@ C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ref\ASP.Server.dll
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.Server.pdb
 C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.Server.genruntimeconfig.cache
+C:\Users\r.mengelle\source\repos\projet_dot_net\ASP.Server\obj\Debug\net6.0\ASP.Server.csproj.AssemblyReference.cache
