@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/ASP.Server/bin/Debug/net6.0
+/ASP.Server/obj
+/WPF.Reader/bin/Debug/net5.0-windows
+/WPF.Reader/obj
+/WPF.Reader/FodyWeavers.xsd
