@@ -16,7 +16,7 @@ namespace ASP.Server.Model
 
         public string Name { get; set; }
 
-        public List<Book> books { get; set; }
+        public List<Book> Books { get; set; }
 
         // N'oublier pas qu'un genre peut avoir plusieur livres
     }
