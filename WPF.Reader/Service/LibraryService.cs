@@ -13,11 +13,31 @@ namespace WPF.Reader.Service
         // Donc pas de LibraryService.Instance.Books = ...
         // mais plutot LibraryService.Instance.Books.Add(...)
         // ou LibraryService.Instance.Books.Clear()
-        public ObservableCollection<Book> Books { get; set; } = new ObservableCollection<Book>() {
-            new Book() { Name = "123"},
-            new Book() { Name = "234"},
-            new Book() { Name = "456"}
-        };
+        public LibraryService()
+        {
+            var SF = new Genre() { Name = "SF" };
+            var Classic = new Genre() { Name = "Classic" };
+            var Romance = new Genre() { Name = "Romance" };
+            var Thriller = new Genre() { Name = "Thriller" };
+
+            Genres = new ObservableCollection<Genre>()
+            {
+                SF,
+                Classic,
+                Romance,
+                Thriller
+            };
+
+            Books = new ObservableCollection<Book>() {
+                new() { Name = "123", Author = "Blabla1", Content = "Blablabla", Genres = new List<Genre> {SF, Thriller}},
+                new() { Name = "234", Author = "Blabla2", Content = "Blablabla2", Genres = new List<Genre> {Romance, Classic}},
+                new() { Name = "456", Author = "Blabla3", Content = "Blablabla3", Genres = new List<Genre> {SF, Thriller}}
+            };
+        }
+
+        public ObservableCollection<Book> Books { get; set; }
+
+        public ObservableCollection<Genre> Genres { get; set; } 
 
         public async void UpdateBookList()
         {
