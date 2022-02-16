@@ -23,4 +23,13 @@ namespace ASP.Server.Model
         // Mettez ici les propriété de votre livre: Nom, Autheur, Prix, Contenu et Genres associés
         // N'oublier pas qu'un livre peut avoir plusieur genres
     }
+
+    public class BookLight
+    {
+        public Book Book { init; private get; }
+
+        public string Name => Book.Name;
+        public double Price => Book.Price;
+        public List<Genre> Genre => Book.Genres;
+    }
 }
