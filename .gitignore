@@ -7,3 +7,9 @@ ASP.Server\obj
 ASP.Server\bin
 WPF.Reader\bin
 WPF.Reader\obj
+/ASP.Server/obj/Debug/net6.0
+/WPF.Reader/obj/Debug/net5.0-windows
+/.vs/Library/DesignTimeBuild
+/.vs/Library
+/ASP.Server/obj
+/WPF.Reader/obj
