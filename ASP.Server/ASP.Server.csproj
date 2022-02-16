@@ -28,7 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\StyleSheet.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Ressources\css\style_custom.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\StyleSheet.css" />
   </ItemGroup>
 
   <ItemGroup>

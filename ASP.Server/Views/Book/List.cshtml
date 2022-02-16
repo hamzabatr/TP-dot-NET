@@ -17,6 +17,7 @@
                 <th scope="col">Content</th>
                 <th scope="col">Genre</th> 
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody> 
@@ -36,11 +37,18 @@
                         </ul>
                     </th>
                     <th>
-                        <form asp-controller="Book" asp-action="Delete">
-                            <input hidden asp-for="Name" value="@book.Id"/>
+                        <form asp-controller="Book" asp-action="Delete" method="post">
+                            <input type="hidden" asp-for="@book.Id" name="id" >
                             <input type="submit" value="Delete" style="width: 100%;" />  
                         </form>
                     </th>
+                     <th>
+                        <form asp-controller="Book" asp-action="Modify" method="post">
+                            <input type="hidden" asp-for="@book.Id" name="idtomodify" >
+                            <input type="submit" value="Modify" style="width: 100%;" />  
+                        </form>
+                    </th>
+                                      
                 </tr>
             }
         </tbody> 
