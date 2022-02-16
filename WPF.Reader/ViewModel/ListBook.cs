@@ -19,12 +19,14 @@ namespace WPF.Reader.ViewModel
 
         public ListBook()
         {
-            ItemSelectedCommand = new RelayCommand(book => { 
-                Ioc.Default.GetRequiredService<INavigationService>().Navigate<DetailsBook>(book)
+            ItemSelectedCommand = new RelayCommand(book =>
+            {
+                Ioc.Default.GetRequiredService<INavigationService>().Navigate<DetailsBook>(book);
             });
+            
             RefreshCommand = new RelayCommand(refresh =>
             {
-                Ioc.Default.GetRequiredService<LibraryService>().UpdateBooksList();
+                Ioc.Default.GetRequiredService<LibraryService>().UpdateBookList();
             });
         }
     }
