@@ -10,7 +10,6 @@ using ASP.Server.Database;
 
 namespace ASP.Server.Api
 {
-
     [Route("/api/[controller]/[action]")]
     [ApiController]
     public class BookController : ControllerBase
@@ -29,14 +28,33 @@ namespace ASP.Server.Api
         //   - Sortie: Liste d'object contenant uniquement: Auteur, Genres, Titre, Id, Prix
         //     la liste restourner doit être compsé des élément entre <offset> et <offset + limit>-
         //     Dans [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] si offset=8 et limit=5, les élément retourner seront : 8, 9, 10, 11, 12
+        public ActionResult<IEnumerable<BookLight>> GetBooks(int limit = 10, int offset = default)
+        {
+            return libraryDbContext.Books
+                .Where(book => book.Id >= offset && book.Id < (limit + offset))
+                .OrderByDescending(book => book.Name)
+                .Select(book => new BookLight() { Book = book })
+                .ToList();
+        }
 
         // - GetBook
         //   - Entrée: Id du livre
         //   - Sortie: Object livre entier
+        public ActionResult<Book> GetBook(int id)
+        {
+            var book = libraryDbContext.Books.SingleOrDefault(book => book.Id == id);
+            if (book == null)
+                return NotFound();
+            return book;
+        }
 
         // - GetGenres
         //   - Entrée: Rien
         //   - Sortie: Liste des genres
+        public ActionResult<IEnumerable<Genre>> GetGenres()
+        {
+            return libraryDbContext.Genre.Select(genre => genre).OrderByDescending(genre => genre.Name).ToList();
+        }
 
         // Aide:
         // Pour récupéré un objet d'une table :
@@ -56,11 +74,5 @@ namespace ASP.Server.Api
 
 
         // Vous vous montre comment faire la 1er, a vous de la compléter et de faire les autres !
-        public ActionResult<List<Book>> GetBooks()
-        {
-            throw new NotImplementedException("You have to do it youtself");
-        }
-
     }
 }
-
