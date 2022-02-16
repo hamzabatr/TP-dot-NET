@@ -8,3 +8,5 @@
 /.vs/Library
 /ASP.Server/obj
 /WPF.Reader/obj
+/ASP.Server/bin/Debug/net6.0
+/ASP.Server/ASP.Server.csproj.user
