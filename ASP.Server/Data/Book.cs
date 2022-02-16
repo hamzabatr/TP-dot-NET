@@ -28,8 +28,8 @@ namespace ASP.Server.Model
     {
         public Book Book { init; private get; }
 
-        public string Name => Book.Nom;
-        public double Price => Book.prix;
-        public List<Genre> Genre => Book.Genre;
+        public string Name => Book.Name;
+        public double Price => Book.Price;
+        public List<Genre> Genre => Book.Genres;
     }
 }
