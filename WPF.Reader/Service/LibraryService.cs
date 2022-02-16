@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Net.Http;
 using WPF.Reader.Model;
 
 namespace WPF.Reader.Service
@@ -18,6 +21,7 @@ namespace WPF.Reader.Service
 
         public async void UpdateBookList()
         {
+            /*
             var httpClient = new HttpClient() { BaseAddress = new Uri("https://127.0.0.1:5001") };
 
             var books = await new ASP.Server.Client(httpClient).ApiBookGetBooksAsync(new List<int>() { 1});
@@ -26,6 +30,7 @@ namespace WPF.Reader.Service
             {
                 Books.Add(book);
             }
+            */
         }
 
         // C'est aussi ici que vous ajouterez les requète réseau pour récupérer les livres depuis le web service que vous avez fait
