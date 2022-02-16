@@ -54,7 +54,7 @@ namespace WPF.Reader.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF.Reader;component/pages/detailsbook.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPF.Reader;V1.0.0.0;component/pages/detailsbook.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\DetailsBook.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
