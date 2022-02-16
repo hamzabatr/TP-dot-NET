@@ -3,7 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-<<<<<<< HEAD
+
 .vs
 ASP.Server\obj
 ASP.Server\bin
@@ -15,7 +15,7 @@ WPF.Reader\obj
 /.vs/Library
 /ASP.Server/obj
 /WPF.Reader/obj
-=======
+
 # User-specific files
 *.rsuser
 *.suo
@@ -374,4 +374,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
->>>>>>> main
+
