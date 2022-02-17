@@ -21,6 +21,6 @@ namespace WPF.Reader.ViewModel
     /* Cette classe sert juste a afficher des donnée de test dans le designer */
     public class InDesignDetailsBook : DetailsBook
     {
-        public InDesignDetailsBook() : base(new Book() /*{ Title = "Test Book" }*/) { }
+        public InDesignDetailsBook() : base(new Book() { Name = "Test Book" }) { }
     }
 }
