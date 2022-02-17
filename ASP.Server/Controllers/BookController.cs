@@ -69,17 +69,15 @@ namespace ASP.Server.Controllers
         public ActionResult<CreateBookModel> Create(CreateBookModel book)
         {
             // Le IsValid est True uniquement si tous les champs de CreateBookModel marqués Required sont remplis
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(new CreateBookModel() {AllGenres = libraryDbContext.Genre.ToList()});
+            // Il faut intéroger la base pour récupérer l'ensemble des objets genre qui correspond aux id dans CreateBookModel.Genres
+            var genres = libraryDbContext.Genre.Where(genre => book.Genres.Contains(genre.Id)).ToList();
+            // Completer la création du livre avec toute les information nécéssaire que vous aurez ajoutez, et metter la liste des gener récupéré de la base aussi
+            libraryDbContext.Add(new Book()
             {
-                // Il faut intéroger la base pour récupérer l'ensemble des objets genre qui correspond aux id dans CreateBookModel.Genres
-                var genres = libraryDbContext.Genre.Where(genre => book.Genres.Contains(genre.Id)).ToList();
-                // Completer la création du livre avec toute les information nécéssaire que vous aurez ajoutez, et metter la liste des gener récupéré de la base aussi
-                libraryDbContext.Add(new Book()
-                {
-                    Name = book.Name, Author = book.Author, Price = book.Price, Content = book.Content, Genres = genres
-                });
-                libraryDbContext.SaveChanges();
-            }
+                Name = book.Name, Author = book.Author, Price = book.Price, Content = book.Content, Genres = genres
+            });
+            libraryDbContext.SaveChanges();
 
             // Il faut interoger la base pour récupérer tous les genres, pour que l'utilisateur puisse les slécétionné
             return View(new CreateBookModel() {AllGenres = libraryDbContext.Genre.ToList()});
