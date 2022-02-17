@@ -49,7 +49,7 @@ namespace ASP.Server.Controllers
             if (!ModelState.IsValid) return View(new CreateGenreModel() { });
             _libraryDbContext.Add(new Genre() {Name=genre.Name});
             _libraryDbContext.SaveChanges();
-            return View(new CreateGenreModel() {});
+            return RedirectToAction("List", "Genre");
         }
 
         public ActionResult<ModifyGenreModel> Modify(ModifyGenreModel genre, long idToModify)

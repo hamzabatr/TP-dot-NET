@@ -80,7 +80,7 @@ namespace ASP.Server.Controllers
             libraryDbContext.SaveChanges();
 
             // Il faut interoger la base pour récupérer tous les genres, pour que l'utilisateur puisse les slécétionné
-            return View(new CreateBookModel() {AllGenres = libraryDbContext.Genre.ToList()});
+            return RedirectToAction("List", "Book");
         }
 
         public ActionResult<ModifyBookModel> Modify(ModifyBookModel book, long idToModify)
@@ -105,13 +105,8 @@ namespace ASP.Server.Controllers
             // Completer la création du livre avec toute les information nécéssaire que vous aurez ajoutez, et metter la liste des gener récupéré de la base aussi
             libraryDbContext.SaveChanges();
 
-            // Il faut interoger la base pour récupérer tous les genres, pour que l'utilisateur puisse les slécétionné
-            return View(new ModifyBookModel()
-            {
-                Id = bookToModify.Id, Name = bookToModify.Name, GenresList = bookToModify.Genres,
-                Author = bookToModify.Author, Price = bookToModify.Price, Content = bookToModify.Content,
-                AllGenres = libraryDbContext.Genre.ToList()
-            });
+            // Il faut interoger la base pour récupérer tous les genres, pour que l'utilisateur puisse les sélectionner
+            return RedirectToAction("List", "Book");
         }
 
         public ActionResult<IEnumerable<Book>> Delete(long id)
