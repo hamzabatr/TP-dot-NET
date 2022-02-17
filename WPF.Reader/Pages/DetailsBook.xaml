@@ -17,10 +17,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
+            <TextBlock Text="Title :"></TextBlock>
+            <TextBlock Text="{Binding CurrentBook.Id}" />
+            <TextBlock Text="Title :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Name}" />
+            <TextBlock Text="Author :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Author}" />
+            <TextBlock Text="Price :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Price}" />
-
         </StackPanel>
 
         <ItemsControl ItemsSource="{Binding CurrentBook.Genres}" Margin="0,0,0,350" Grid.Row="1">
