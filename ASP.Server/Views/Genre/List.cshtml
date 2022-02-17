@@ -1,23 +1,49 @@
-﻿@using ASP.Server.Model
-
-@model IEnumerable<Genre>
+﻿@model IEnumerable<ASP.Server.Data.Genre>
 @{
     ViewData["Title"] = "Liste Genre";
 }
-
-<div class="listeGenres">
-    <h1>Liste des Genres:</h1>
-    <!-- la liste des genres est dans la variable Model qui est typé en ligne 3, elle correspond à la variable xxx dans View(xxx) du controller -->
-    @foreach (var genre in Model)
-    {
-        <div>@genre.Name</div>
-        <div>@genre.Id</div>
-        @foreach(var book in @genre.Books)
-        {
-           <div>@book.Name</div> 
-        }
-        <br /><br />
-    }
-</>
+<div class="listeBooks">
+    <h1>List of genres</h1>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Related books</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var genre in Model)
+            {
+                <tr>
+                    <th> @genre.Id </th>
+                    <th> @genre.Name </th>
+                    <th>
+                        <ul>
+                            @foreach (var book in @genre.Books)
+                            {
+                                <li>@book.Name</li>
+                            }
+                        </ul>
+                    </th>
+                    <th>
+                        <form asp-controller="Genre" asp-action="Delete" method="post">
+                            <input type="hidden" asp-for="@genre.Id" name="id">
+                            <input type="submit" value="Delete" style="width: 100%;" />
+                        </form>
+                    </th>
+                    <th>
+                        <form asp-controller="Genre" asp-action="Modify" method="post">
+                            <input type="hidden" asp-for="@genre.Id" name="idtomodify">
+                            <input type="submit" value="Modify" style="width: 100%;" />
+                        </form>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 

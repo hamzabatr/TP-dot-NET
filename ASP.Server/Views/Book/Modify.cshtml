@@ -1,5 +1,5 @@
 ﻿@using ASP.Server.Controllers
-@model CreateBookModel
+@model ModifyBookModel
 @{
     ViewData["Title"] = "Add a book";
 }
@@ -16,14 +16,16 @@ input, textarea, select {
 label {
     flex-basis:10%;
 }
+
 </style>
 
-<h1>Create book</h1>
+<h1>Modify book</h1>
 <!-- Voici une facon de faire, mais ce n'est pas la seul, a vous de jouer ! -->
-<form asp-controller="Book" asp-action="Create">
+<form asp-controller="Book" asp-action="Modify">
+    <input type="hidden" value="@Model.Id" name="idtomodify"/>
     <div class="input-group">
         <label asp-for="Name"></label>
-        <input asp-for="Name" />
+        <input asp-for="Name" value="@Model.Name" />
     </div>
     <div class="input-group">
         <label asp-for="Author"></label>
@@ -43,5 +45,6 @@ label {
         <select asp-for="Genres" asp-items="@(new SelectList(Model.AllGenres,"Id","Name"))">
         </select>
     </div>
-    <input type="submit" value="Add" style="width: 100%; margin-top: 50px" />
+    <a class="books list link" asp-area="" asp-controller="Book" asp-action="List">Display list of books</a>
+    <input type="submit" value="Update" style="width: 100%; margin-top: 50px" />
 </form>

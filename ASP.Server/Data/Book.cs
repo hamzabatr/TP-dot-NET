@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace ASP.Server.Model
+namespace ASP.Server.Data
 {
     public class Book
     {
@@ -30,6 +28,8 @@ namespace ASP.Server.Model
 
         public string Name => Book.Name;
         public double Price => Book.Price;
+        public int Id => Book.Id;
+        public string Author => Book.Author;
         public List<Genre> Genre => Book.Genres;
     }
 }

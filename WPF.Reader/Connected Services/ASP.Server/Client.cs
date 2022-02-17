@@ -395,6 +395,12 @@ namespace WPF.Reader.ASP.Server
         [Newtonsoft.Json.JsonProperty("price", Required = Newtonsoft.Json.Required.Always)]
         public double Price { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
+        public int Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("author", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Author { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("genre", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Genre> Genre { get; set; }
     

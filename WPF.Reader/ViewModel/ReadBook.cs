@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using WPF.Reader.Model;
+using WPF.Reader.ASP.Server;
 
 namespace WPF.Reader.ViewModel
 {
