@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ASP.Server.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASP.Server.Data;
 using ASP.Server.Database;
 
 namespace ASP.Server.Api
@@ -14,11 +14,11 @@ namespace ASP.Server.Api
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly LibraryDbContext libraryDbContext;
+        private readonly LibraryDbContext _libraryDbContext;
 
         public BookController(LibraryDbContext libraryDbContext)
         {
-            this.libraryDbContext = libraryDbContext;
+            this._libraryDbContext = libraryDbContext;
         }
 
         // Methode a ajouter : 
@@ -28,11 +28,11 @@ namespace ASP.Server.Api
         //   - Sortie: Liste d'object contenant uniquement: Auteur, Genres, Titre, Id, Prix
         //     la liste restourner doit être compsé des élément entre <offset> et <offset + limit>-
         //     Dans [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] si offset=8 et limit=5, les élément retourner seront : 8, 9, 10, 11, 12
-        public ActionResult<IEnumerable<BookLight>> GetBooks(int limit = 10, int offset = default)
+        public ActionResult<IEnumerable<BookLight>> GetBooks(int limit = 5, int offset = default)
         {
-            return libraryDbContext.Books
+            return _libraryDbContext.Books
                 .Where(book => book.Id >= offset && book.Id < (limit + offset))
-                .OrderByDescending(book => book.Name)
+                .OrderBy(book => book.Name)
                 .Select(book => new BookLight() { Book = book })
                 .ToList();
         }
@@ -42,7 +42,7 @@ namespace ASP.Server.Api
         //   - Sortie: Object livre entier
         public ActionResult<Book> GetBook(int id)
         {
-            var book = libraryDbContext.Books.SingleOrDefault(book => book.Id == id);
+            var book = _libraryDbContext.Books.SingleOrDefault(book => book.Id == id);
             if (book == null)
                 return NotFound();
             return book;
@@ -53,7 +53,7 @@ namespace ASP.Server.Api
         //   - Sortie: Liste des genres
         public ActionResult<IEnumerable<Genre>> GetGenres()
         {
-            return libraryDbContext.Genre.Select(genre => genre).OrderByDescending(genre => genre.Name).ToList();
+            return _libraryDbContext.Genre.Select(genre => genre).OrderByDescending(genre => genre.Name).ToList();
         }
 
         // Aide:

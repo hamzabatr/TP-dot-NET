@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using WPF.Reader.Model;
+using WPF.Reader.ASP.Server;
 using WPF.Reader.Service;
 
 namespace WPF.Reader.ViewModel
@@ -15,7 +15,7 @@ namespace WPF.Reader.ViewModel
         public ICommand RefreshCommand { get; set; }
 
         // n'oublier pas faire de faire le binding dans ListBook.xaml !!!!
-        public ObservableCollection<Book> Books => Ioc.Default.GetRequiredService<LibraryService>().Books;
+        public ObservableCollection<BookLight> Books => Ioc.Default.GetRequiredService<LibraryService>().Books;
 
         public ListBook()
         {

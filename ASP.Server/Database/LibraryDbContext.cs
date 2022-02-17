@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ASP.Server.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASP.Server.Data;
 
 namespace ASP.Server.Database
 {
