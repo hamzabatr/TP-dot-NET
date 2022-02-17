@@ -12,7 +12,7 @@ namespace ASP.Server.Controllers
     public class CreateBookModel
     {
         [Required]
-        [Display(Name = "Nom")]
+        [Display(Name = "Name")]
         public String Name { get; set; }
 
         // Ajouter ici tous les champ que l'utilisateur devra remplir pour ajouter un livre
@@ -32,7 +32,7 @@ namespace ASP.Server.Controllers
         public long Id { get; set;}
 
         [Required]
-        [Display(Name = "Nom")]
+        [Display(Name = "Name")]
         public String Name { get; set; }
 
         // Ajouter ici tous les champ que l'utilisateur devra remplir pour ajouter un livre
@@ -101,8 +101,10 @@ namespace ASP.Server.Controllers
                 List<Genre> genres = libraryDbContext.Genre.Where(genre => book.Genres.Contains(genre.Id)).ToList();
                 // Completer la création du livre avec toute les information nécéssaire que vous aurez ajoutez, et metter la liste des gener récupéré de la base aussi
                 libraryDbContext.SaveChanges();
+                return RedirectToAction("List", "Book");
+
             }
-            
+
             // Il faut interoger la base pour récupérer tous les genres, pour que l'utilisateur puisse les slécétionné
             return View(new ModifyBookModel() { Id=booktomodify.Id,Name = booktomodify.Name, GenresList = booktomodify.Genres, Author = booktomodify.Author, Price = booktomodify.Price, Content = booktomodify.Content, AllGenres = libraryDbContext.Genre.ToList() });
         }

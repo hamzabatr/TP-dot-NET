@@ -17,6 +17,16 @@ namespace ASP.Server.Controllers
         public String Name { get; set; }
     }
 
+    public class ModifyGenreModel
+    {
+        public long Id { get; set; }
+
+        [Required]
+        [Display(Name = "Nom")]
+
+        public String Name { get; set; }
+    }
+
     public class GenreController : Controller
     {
         private readonly LibraryDbContext libraryDbContext;
@@ -50,6 +60,30 @@ namespace ASP.Server.Controllers
                 libraryDbContext.SaveChanges();
             }
             return View(new CreateGenreModel() {});
+        }
+
+        public ActionResult<ModifyGenreModel> Modify(ModifyGenreModel genre, long idtomodify)
+        {
+            var genretomodify = libraryDbContext.Genre.Single(genre => genre.Id == idtomodify);
+
+            // Le IsValid est True uniquement si tous les champs de CreateBookModel marqués Required sont remplis
+            if (ModelState.IsValid)
+            {
+                genretomodify.Name = genre.Name;
+                // Completer la création du genre avec toute les information nécéssaire que vous aurez ajoutees, et mettez la liste des genres récupérés de la base aussi
+                libraryDbContext.SaveChanges();
+                return RedirectToAction("List", "Genre");
+            }
+            // Il faut interoger la base pour récupérer tous les genres, pour que l'utilisateur puisse les slécétionné
+            return View(new ModifyGenreModel() { Id = genretomodify.Id, Name = genretomodify.Name });
+        }
+
+        public ActionResult<IEnumerable<Genre>> Delete(long id)
+        {
+            Genre genre = libraryDbContext.Genre.Single(genre => genre.Id == id);
+            libraryDbContext.Genre.Remove(genre);
+            libraryDbContext.SaveChanges();
+            return RedirectToAction("List", "Genre");
         }
     }
 }
