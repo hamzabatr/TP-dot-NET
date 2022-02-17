@@ -21,7 +21,11 @@
         <!-- On aimerais bien avoir le tire du livre en entête -->
 
         <!-- Ainsi que le contenu du livre ! -->
-        
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding CurrentBook.Name}" />
+            <TextBlock Text="{Binding CurrentBook.Content}" />
+
+        </StackPanel>
         <Button Grid.Row="2" Command="{Binding Path=GoBack, Source={StaticResource ResourceKey=navigator}}" CommandParameter="LIST" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200" Content="Retourner au details" Margin="0,0,0,27"/>
     </Grid>
 </Page>

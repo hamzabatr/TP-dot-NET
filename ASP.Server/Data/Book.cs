@@ -30,6 +30,8 @@ namespace ASP.Server.Model
 
         public string Name => Book.Name;
         public double Price => Book.Price;
+        public int Id => Book.Id;
+        public string Author => Book.Author;
         public List<Genre> Genre => Book.Genres;
     }
 }
