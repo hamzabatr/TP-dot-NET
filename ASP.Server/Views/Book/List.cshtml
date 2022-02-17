@@ -8,19 +8,50 @@
 <div class="listeBooks">
     <h1>Liste des livres:</h1>
     <!-- la liste des genres est dans la variable Model qui est typé en ligne 3, elle correspond à la variable xxx dans View(xxx) du controller -->
-    @foreach (var book in Model)
-    {
-        <div>@book.Author</div>
-        <div>@book.Name</div>
-        <div>@book.Price</div>
-        <div>@book.Content</div>
-
-        @foreach(var genre in book.Genres)
-        {
-            <div>@genre.Name</div>
-        }
-
-
-    }
+    <table>
+       <thead>
+            <tr>
+                <th scope="col">Author</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Content</th>
+                <th scope="col">Genre</th> 
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody> 
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <th>@book.Author</th>
+                    <th>@book.Name</th>
+                    <th>@book.Price</th>
+                    <th>@book.Content</th>
+                    <th>
+                        <ul>
+                            @foreach(var genre in book.Genres)
+                            {
+                                <li>@genre.Name</li>
+                            }
+                        </ul>
+                    </th>
+                    <th>
+                        <form asp-controller="Book" asp-action="Delete" method="post">
+                            <input type="hidden" asp-for="@book.Id" name="id" >
+                            <input type="submit" value="Delete" style="width: 100%;" />  
+                        </form>
+                    </th>
+                     <th>
+                        <form asp-controller="Book" asp-action="Modify" method="post">
+                            <input type="hidden" asp-for="@book.Id" name="idtomodify" >
+                            <input type="submit" value="Modify" style="width: 100%;" />  
+                        </form>
+                    </th>
+                                      
+                </tr>
+            }
+        </tbody> 
+    </table>
 </div>
 
