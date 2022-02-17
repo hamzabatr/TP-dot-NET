@@ -18,7 +18,10 @@
 
         <!-- Ainsi que le contenu du livre ! -->
         <StackPanel Orientation="Vertical">
+            <TextBlock Text="Title :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Name}" />
+
+            <TextBlock Text="Content :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Content}" TextWrapping="Wrap" Width="Auto" Height="Auto"/>
         </StackPanel>
         <Button Grid.Row="2" Command="{Binding Path=GoBack, Source={StaticResource ResourceKey=navigator}}" CommandParameter="LIST" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200" Content="Retourner au details" Margin="0,0,0,27"/>
