@@ -11,7 +11,9 @@ namespace ASP.Server.Controllers
 {
     public class CreateBookModel
     {
-        [Required] [Display(Name = "Nom")] public string Name { get; set; }
+        [Required]
+        [Display(Name = "Name")]
+        public String Name { get; set; }
 
         // Ajouter ici tous les champ que l'utilisateur devra remplir pour ajouter un livre
         public string Author { get; set; }
@@ -29,7 +31,9 @@ namespace ASP.Server.Controllers
     {
         public long Id { get; set; }
 
-        [Required] [Display(Name = "Nom")] public string Name { get; set; }
+        [Required]
+        [Display(Name = "Name")]
+        public String Name { get; set; }
 
         // Ajouter ici tous les champ que l'utilisateur devra remplir pour ajouter un livre
         public string Author { get; set; }

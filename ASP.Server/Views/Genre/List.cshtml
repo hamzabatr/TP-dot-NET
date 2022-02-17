@@ -5,32 +5,46 @@
     ViewData["Title"] = "Liste Genre";
 }
 <div class="listeBooks">
-    <h1>Liste des Genres:</h1>
+    <h1>List of genres</h1>
     <table>
         <thead>
             <tr>
-                <th scope="col">Id genre</th>
-                <th scope="col">Type (genre)</th>
-                <th scope="col">Films associés</th>
+                <th scope="col">Id</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Related books</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
-        <tbody> 
+        <tbody>
             @foreach (var genre in Model)
             {
-            <tr>
-                <th> @genre.Id </th>
-                <th> @genre.Name </th>
-                <th> 
-                    <ul> 
-                    @foreach(var book in @genre.Books)
-                    {
-                        <li>@book.Name</li>
-                    }
-                    </ul>
-                </th>
-            </tr>
+                <tr>
+                    <th> @genre.Id </th>
+                    <th> @genre.Name </th>
+                    <th>
+                        <ul>
+                            @foreach (var book in @genre.Books)
+                            {
+                                <li>@book.Name</li>
+                            }
+                        </ul>
+                    </th>
+                    <th>
+                        <form asp-controller="Genre" asp-action="Delete" method="post">
+                            <input type="hidden" asp-for="@genre.Id" name="id">
+                            <input type="submit" value="Delete" style="width: 100%;" />
+                        </form>
+                    </th>
+                    <th>
+                        <form asp-controller="Genre" asp-action="Modify" method="post">
+                            <input type="hidden" asp-for="@genre.Id" name="idtomodify">
+                            <input type="submit" value="Modify" style="width: 100%;" />
+                        </form>
+                    </th>
+                </tr>
             }
-        </tbody> 
+        </tbody>
     </table>
 </div>
 
