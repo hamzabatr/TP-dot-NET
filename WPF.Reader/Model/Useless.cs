@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF.Reader.Model
 {
-    public class Genre
+    internal class Useless
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public List<Book> Books { get; set; }
     }
 }

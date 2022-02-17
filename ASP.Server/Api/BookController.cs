@@ -32,7 +32,7 @@ namespace ASP.Server.Api
         {
             return libraryDbContext.Books
                 .Where(book => book.Id >= offset && book.Id < (limit + offset))
-                .OrderByDescending(book => book.Name)
+                .OrderBy(book => book.Name)
                 .Select(book => new BookLight() { Book = book })
                 .ToList();
         }
