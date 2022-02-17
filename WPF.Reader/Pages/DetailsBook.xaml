@@ -17,7 +17,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Title :"></TextBlock>
+            <TextBlock Text="Id :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Id}" />
             <TextBlock Text="Title :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Name}" />
