@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ASP.Server.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ASP.Server.Data;
 
 namespace ASP.Server.Database
 {
@@ -16,13 +16,13 @@ namespace ASP.Server.Database
             if (bookDbContext.Books.Any())
                 return;
 
-            Genre Roman, SF, Classic, Romance, Thriller;
+            Genre roman, sf, classic, romance, thriller;
             bookDbContext.Genre.AddRange(
-                Roman = new Genre() {Name = "Roman"},
-                SF = new Genre() {Name = "SF"},
-                Classic = new Genre() {Name = "Classic"},
-                Romance = new Genre() {Name = "Romance"},
-                Thriller = new Genre() {Name = "Thriller"}
+                roman = new Genre() {Name = "Roman"},
+                sf = new Genre() {Name = "SF"},
+                classic = new Genre() {Name = "Classic"},
+                romance = new Genre() {Name = "Romance"},
+                thriller = new Genre() {Name = "Thriller"}
             );
             bookDbContext.SaveChanges();
 
