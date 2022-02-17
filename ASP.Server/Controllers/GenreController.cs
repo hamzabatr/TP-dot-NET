@@ -58,6 +58,8 @@ namespace ASP.Server.Controllers
             {
                 libraryDbContext.Add(new Genre() {Name=genre.Name});
                 libraryDbContext.SaveChanges();
+                return RedirectToAction("List", "Genre");
+
             }
             return View(new CreateGenreModel() {});
         }
