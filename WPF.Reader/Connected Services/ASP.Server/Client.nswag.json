@@ -104,7 +104,8 @@
     "BookLight": {
       "type": "object",
       "required": [
-        "price"
+        "price",
+        "id"
       ],
       "properties": {
         "book": {
@@ -116,6 +117,13 @@
         "price": {
           "type": "number",
           "format": "double"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
         },
         "genre": {
           "type": "array",
