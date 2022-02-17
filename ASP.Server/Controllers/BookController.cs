@@ -61,12 +61,9 @@ namespace ASP.Server.Controllers
         public ActionResult<IEnumerable<Book>> List()
         {
             // récupérer les livres dans la base de donées pour qu'elle puisse être affiché
-            List<Book> ListBooks = null;
+            var listBooks = libraryDbContext.Books.Include(book => book.Genres).OrderBy(book => book.Id).ToList();
 
-            if (libraryDbContext.Books.ToList() != null)
-                ListBooks = libraryDbContext.Books.Include(book => book.Genres).ToList();
-
-            return View(ListBooks);
+            return View(listBooks);
         }
 
         public ActionResult<CreateBookModel> Create(CreateBookModel book)
