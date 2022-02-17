@@ -30,10 +30,10 @@ namespace WPF.Reader.Service
         {
             var books = await new Client(_httpClient).ApiBookGetBooksAsync(null, null);
             Books?.Clear();
-
+            
             foreach (var book in books.OrderBy(book => book.Name))
             {
-                Books.Add(book);
+                Books?.Add(book);
             }
         }
 
@@ -43,7 +43,7 @@ namespace WPF.Reader.Service
             Genres?.Clear();
             foreach (var genre in genres.Select(genre => new Genre() {Name = genre.Name, Id = genre.Id}))
             {
-                Genres.Add(genre);
+                Genres?.Add(genre);
             }
         }
 
