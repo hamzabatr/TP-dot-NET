@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using WPF.Reader.ASP.Server;
+using WPF.Reader.Service;
 
 
 namespace WPF.Reader.ViewModel
