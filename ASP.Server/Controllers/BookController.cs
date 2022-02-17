@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ASP.Server.Database;
-using ASP.Server.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using ASP.Server.Data;
 
 namespace ASP.Server.Controllers
 {
