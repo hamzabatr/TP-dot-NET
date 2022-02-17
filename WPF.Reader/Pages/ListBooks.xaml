@@ -1,4 +1,5 @@
 ﻿<Page x:Class="WPF.Reader.Pages.ListBooks"
+      Name="ListBook"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,7 +16,11 @@
             <ListBox ItemsSource="{Binding Books}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}"/>
+                            <Button Command="{Binding ElementName=ListBook, Path=DataContext.ItemSelectedCommand}" CommandParameter="{Binding .}" Content="See details"/>
+                            <TextBlock Text="{Binding Author}"/>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
