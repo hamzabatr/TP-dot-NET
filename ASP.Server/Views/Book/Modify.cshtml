@@ -16,6 +16,7 @@ input, textarea, select {
 label {
     flex-basis:10%;
 }
+
 </style>
 
 <h1>Modify book</h1>
@@ -44,5 +45,6 @@ label {
         <select asp-for="Genres" asp-items="@(new SelectList(Model.AllGenres,"Id","Name"))">
         </select>
     </div>
-    <input type="submit" value="Add" style="width: 100%; margin-top: 50px" />
+    <a class="books list link" asp-area="" asp-controller="Book" asp-action="List">Display list of books</a>
+    <input type="submit" value="Update" style="width: 100%; margin-top: 50px" />
 </form>
