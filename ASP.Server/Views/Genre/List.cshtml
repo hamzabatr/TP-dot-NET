@@ -20,14 +20,7 @@
                 <tr>
                     <th> @genre.Id </th>
                     <th> @genre.Name </th>
-                    <th>
-                        <ul>
-                            @foreach (var book in @genre.Books)
-                            {
-                                <li>@book.Name</li>
-                            }
-                        </ul>
-                    </th>
+                    <th> Number : @genre.Books.Count</th>
                     <th>
                         <form asp-controller="Genre" asp-action="Delete" method="post">
                             <input type="hidden" asp-for="@genre.Id" name="id">
