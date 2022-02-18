@@ -42,11 +42,11 @@ namespace ASP.Server.Api
         //   - Sortie: Object livre entier
         public ActionResult<Book> GetBook(int id)
         {
-            var book = _libraryDbContext.Books.SingleOrDefault(book => book.Id == id);
+            var book = _libraryDbContext.Books.Include(book => book.Genres).SingleOrDefault(book => book.Id == id);
             if (book == null)
                 return NotFound();
             return book;
-        }
+        }   
 
         // - GetGenres
         //   - Entrée: Rien
