@@ -21,29 +21,20 @@
             <TextBlock Text="{Binding CurrentBook.Author}" />
             <TextBlock Text="Price :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Price}" />
-            <TextBlock Text="Genre :"></TextBlock>
-        </StackPanel>
-        <ItemsControl ItemsSource="{Binding CurrentBook.Genres}" Margin="0,0,0,350">
+            <TextBlock Text="Genre(s) :"></TextBlock>
+            <ItemsControl ItemsSource="{Binding CurrentBook.Genres}" Margin="0,0,0,350">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
         </ItemsControl>
-
+    
         <Button Command="{Binding ReadCommand}" CommandParameter="{Binding CurrentBook}" Content="Read Book" Grid.Row="1"/>
 
         </StackPanel>
-        <Button Command="{Binding ReadCommand}" 
-                CommandParameter="{Binding CurrentBook}" 
-                Content="Read Book" 
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Height="30"/>
-
         <!-- il faut afficher les information du livre: Nom, Auteur, Prix, Genres-->
         <!-- Mais pas le contenu ! -->
         <!-- N'oublier pas le bouton pour aller lire le livre. La commande ReadCommand est faite pour ca ! -->
     </Grid>
-
 </Page>
