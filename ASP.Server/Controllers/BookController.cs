@@ -99,13 +99,12 @@ namespace ASP.Server.Controllers
 
             bookToModify.Name = book.Name;
             bookToModify.Author = book.Author;
+            bookToModify.Content = book.Content;
             bookToModify.Price = book.Price;
             bookToModify.Content = book.Content;
             
-            
             // Il faut intéroger la base pour récupérer l'ensemble des objets genre qui correspond aux id dans CreateBookModel.Genres
             List<Genre> genres = libraryDbContext.Genre.Where(genre => book.Genres.Contains(genre.Id)).ToList();
-                   
 
             bookToModify.Genres.Clear();          
                      // Completer la création du livre avec toute les information nécéssaire que vous aurez ajoutez, et metter la liste des gener récupéré de la base aussi
