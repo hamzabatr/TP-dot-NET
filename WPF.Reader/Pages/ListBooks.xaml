@@ -9,7 +9,6 @@
       xmlns:model="clr-namespace:WPF.Reader.Model"
       d:DataContext="{d:DesignInstance Type=vm:ListBook, d:IsDesignTimeCreatable=True}"
       mc:Ignorable="d"
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="ListBooks">
     <StackPanel>
         <Grid>
@@ -22,13 +21,26 @@
                             <TextBlock Text="Author :"></TextBlock>
                             <TextBlock Text="{Binding Author}" />
                             <Button Command="{Binding ElementName=ListBook, Path=DataContext.ItemSelectedCommand}"
-                                    CommandParameter="{Binding .}" 
+                                    CommandParameter="{Binding .}"
                                     Content="See details" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
+
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Height="30">
+            <Button Command="{Binding Path=PreviousCommand}"
+                    Content="Previous page" />
+            <TextBlock Text="{Binding ElementName=ListBook, Path=DataContext.PageNumber}" 
+                       VerticalAlignment="Center" 
+                       Margin="5"></TextBlock>
+            <Button Command="{Binding Path=NextCommand}"
+                    Content="Next page" />
+        </StackPanel>
         <!-- 
             A vous de créer la liste avec le bon binding. Une <ListBox> fera l'affaire 
             La propriété ItemsSource doit pointé vers la propiété Books de votre dataContext actuelle 

@@ -28,7 +28,7 @@ namespace ASP.Server.Api
         //   - Sortie: Liste d'object contenant uniquement: Auteur, Genres, Titre, Id, Prix
         //     la liste restourner doit être compsé des élément entre <offset> et <offset + limit>-
         //     Dans [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] si offset=8 et limit=5, les élément retourner seront : 8, 9, 10, 11, 12
-        public ActionResult<IEnumerable<BookLight>> GetBooks(int limit = 5, int offset = default)
+        public ActionResult<IEnumerable<BookLight>> GetBooks(int limit = 5, int offset = 1)
         {
             return _libraryDbContext.Books
                 .Where(book => book.Id >= offset && book.Id < (limit + offset))

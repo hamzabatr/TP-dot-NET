@@ -12,10 +12,6 @@
       Title="DetailsBook">
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Id :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Id}" />
@@ -25,9 +21,9 @@
             <TextBlock Text="{Binding CurrentBook.Author}" />
             <TextBlock Text="Price :"></TextBlock>
             <TextBlock Text="{Binding CurrentBook.Price}" />
+            <TextBlock Text="Genre :"></TextBlock>
         </StackPanel>
-
-        <ItemsControl ItemsSource="{Binding CurrentBook.Genres}" Margin="0,0,0,350" Grid.Row="1">
+        <ItemsControl ItemsSource="{Binding CurrentBook.Genres}" Margin="0,0,0,350">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
@@ -35,9 +31,12 @@
                 </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <Button Command="{Binding ReadCommand}" CommandParameter="{Binding CurrentBook}" Content="Read Book" Margin="-10,50,10,300" Grid.Row="1"/>
-
-
+        <Button Command="{Binding ReadCommand}" 
+                CommandParameter="{Binding CurrentBook}" 
+                Content="Read Book" 
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Height="30"/>
 
         <!-- il faut afficher les information du livre: Nom, Auteur, Prix, Genres-->
         <!-- Mais pas le contenu ! -->
