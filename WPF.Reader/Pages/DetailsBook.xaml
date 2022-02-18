@@ -31,6 +31,9 @@
                 </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <Button Command="{Binding ReadCommand}" CommandParameter="{Binding CurrentBook}" Content="Read Book" Grid.Row="1"/>
+
+        </StackPanel>
         <Button Command="{Binding ReadCommand}" 
                 CommandParameter="{Binding CurrentBook}" 
                 Content="Read Book" 
