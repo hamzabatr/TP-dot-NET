@@ -11,7 +11,7 @@
       mc:Ignorable="d"
       Title="ListBooks">
     <StackPanel>
-        <Grid>
+        <Grid Margin="10">
             <ListBox ItemsSource="{Binding Books}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -40,6 +40,20 @@
                        Margin="5"></TextBlock>
             <Button Command="{Binding Path=NextCommand}"
                     Content="Next page" />
+        </StackPanel>
+
+        <StackPanel Margin="10">
+            <TextBlock Text="List of genre in our library :" TextAlignment="Center" ></TextBlock>
+            <ListBox ItemsSource="{Binding Genres}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name : "></TextBlock>
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
         <!-- 
             A vous de créer la liste avec le bon binding. Une <ListBox> fera l'affaire 

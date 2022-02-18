@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 using WPF.Reader.ASP.Server;
 using WPF.Reader.Service;
@@ -19,10 +20,12 @@ namespace WPF.Reader.ViewModel
 
         // n'oublier pas faire de faire le binding dans ListBook.xaml !!!!
         public ObservableCollection<BookLight> Books => Ioc.Default.GetRequiredService<LibraryService>().Books;
+        public ObservableCollection<Genre> Genres => Ioc.Default.GetRequiredService<LibraryService>().Genres;
 
         public ListBook()
         {
             Ioc.Default.GetRequiredService<LibraryService>().UpdateBookList();
+            Ioc.Default.GetRequiredService<LibraryService>().UpdateGenreList();
 
             ItemSelectedCommand = new RelayCommand(book =>
             {
@@ -31,7 +34,7 @@ namespace WPF.Reader.ViewModel
 
             NextCommand = new RelayCommand(next =>
             {
-                if (PageNumber < 20)
+                if (Books.Count == 5)
                 {
                     Ioc.Default.GetRequiredService<LibraryService>().NextBookListPage(PageNumber);
                     PageNumber++;
