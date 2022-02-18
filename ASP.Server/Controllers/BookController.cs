@@ -85,7 +85,8 @@ namespace ASP.Server.Controllers
 
         public ActionResult<ModifyBookModel> Modify(ModifyBookModel book, long idToModify)
         {
-            var bookToModify = libraryDbContext.Books.Single(book => book.Id == idToModify);
+            var bookToModify = libraryDbContext.Books.Include(book => book.Genres).Single(book => book.Id == idToModify);
+
 
             // Le IsValid est True uniquement si tous les champs de CreateBookModel marqués Required sont remplis
             if (!ModelState.IsValid)
@@ -95,13 +96,21 @@ namespace ASP.Server.Controllers
                     Author = bookToModify.Author, Price = bookToModify.Price, Content = bookToModify.Content,
                     AllGenres = libraryDbContext.Genre.ToList()
                 });
+
             bookToModify.Name = book.Name;
             bookToModify.Author = book.Author;
             bookToModify.Content = book.Content;
             bookToModify.Price = book.Price;
+            bookToModify.Content = book.Content;
+            
             // Il faut intéroger la base pour récupérer l'ensemble des objets genre qui correspond aux id dans CreateBookModel.Genres
-            var genres = libraryDbContext.Genre.Where(genre => book.Genres.Contains(genre.Id)).ToList();
-            // Completer la création du livre avec toute les information nécéssaire que vous aurez ajoutez, et metter la liste des gener récupéré de la base aussi
+            List<Genre> genres = libraryDbContext.Genre.Where(genre => book.Genres.Contains(genre.Id)).ToList();
+
+            bookToModify.Genres.Clear();          
+                     // Completer la création du livre avec toute les information nécéssaire que vous aurez ajoutez, et metter la liste des gener récupéré de la base aussi
+            libraryDbContext.SaveChanges();
+
+            bookToModify.Genres = genres;
             libraryDbContext.SaveChanges();
 
             // Il faut interoger la base pour récupérer tous les genres, pour que l'utilisateur puisse les sélectionner

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
+using System.Windows;
 using WPF.Reader.ASP.Server;
 
 namespace WPF.Reader.Service
@@ -29,22 +30,57 @@ namespace WPF.Reader.Service
         public async void UpdateBookList()
         {
             var books = await new Client(_httpClient).ApiBookGetBooksAsync(null, null);
-            Books?.Clear();
-
-            foreach (var book in books.OrderBy(book => book.Name))
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                Books.Add(book);
-            }
+                Books?.Clear();
+
+                foreach (var book in books.OrderBy(book => book.Id))
+                {
+                    Books?.Add(book);
+                }
+            });
         }
 
         public async void UpdateGenreList()
         {
             var genres = await new Client(_httpClient).ApiBookGetGenresAsync();
-            Genres?.Clear();
-            foreach (var genre in genres.Select(genre => new Genre() {Name = genre.Name, Id = genre.Id}))
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                Genres.Add(genre);
-            }
+                Genres?.Clear();
+                foreach (var genre in genres.Select(genre => new Genre() {Name = genre.Name, Id = genre.Id}))
+                {
+                    Genres?.Add(genre);
+                }
+            });
+        }
+
+        public async void NextBookListPage(int pageNumber)
+        {
+            var books = await new Client(_httpClient).ApiBookGetBooksAsync(null, (pageNumber * 5) + 1);
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Books?.Clear();
+
+                foreach (var book in books.OrderBy(book => book.Id))
+                {
+                    Books?.Add(book);
+                }
+            });
+        }
+
+        public async void PreviousBookListPage(int pageNumber)
+        {
+            var books = await new Client(_httpClient).ApiBookGetBooksAsync(null, ((pageNumber - 1) * 5) + 1);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Books?.Clear();
+
+                foreach (var book in books.OrderBy(book => book.Id))
+                {
+                    Books?.Add(book);
+                }
+            });
         }
 
         // C'est aussi ici que vous ajouterez les requète réseau pour récupérer les livres depuis le web service que vous avez fait
